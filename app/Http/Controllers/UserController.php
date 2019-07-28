@@ -11,4 +11,12 @@ class UserController extends Controller
         $user = User::all();
         return view('admin.user.list',compact('user'));
     }
+    public function create(){
+        return view('admin.user.add');
+    }
+    public function store(Request $request){
+        $data = $request->all();
+        User::create($data);
+        return redirect('admin/user/list');
+    }
 }
